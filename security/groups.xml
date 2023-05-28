@@ -1,0 +1,21 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<odoo>
+    <record id="academia_categoria_modulo" model="ir.module.category">
+        <field name="name">Academia</field>
+        <field name="description">Ayuda a gestionar la academia</field>
+        <field name="sequence">100</field>     
+    </record>
+
+    <record id="academia_users" model="res.groups">
+        <field name="name">Usuarios para consulta</field>
+        <field name="category_id" ref="academia_categoria_modulo"/>
+        <field name= "users" eval="[(4, ref('base.group_user'))]"/>
+    </record>
+    
+    <record id="academia_admin" model="res.groups">
+        <field name="name">Usuarios administradores</field>
+        <field name="category_id" ref="academia_categoria_modulo"/>
+        <field name="users" eval="[(4, ref('base.user_admin'))]"/>        
+    </record>
+    
+</odoo>

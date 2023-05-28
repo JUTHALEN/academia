@@ -1,0 +1,95 @@
+<odoo>
+    <data>  
+  
+    <!-- Profesores de ejemplo -->
+    <record model="modulo.profesor" id="profesor_1">
+      <field name="name">Juan</field>
+      <field name="apellidos">Pérez</field>
+      <field name="email">juan.perez@example.com</field>
+    </record>
+
+    <record model="modulo.profesor" id="profesor_2">
+      <field name="name">María</field>
+      <field name="apellidos">González</field>
+      <field name="email">maria.gonzalez@example.com</field>
+    </record>
+
+    <record model="modulo.profesor" id="profesor_3">
+      <field name="name">Luis</field>
+      <field name="apellidos">García</field>
+      <field name="email">luis.garcia@example.com</field>
+    </record>
+
+    <!-- Alumnos de ejemplo -->
+    <record model="modulo.alumno" id="alumno_1">
+      <field name="name">Pedro</field>
+      <field name="apellidos">García</field>
+      <field name="email">pedro.garcia@example.com</field>
+      <field name="photo" file="academia/static/fotos/usuario1.jpeg" type="base64"></field>
+      <field name="fecha_nacimiento">2000-01-01</field>
+      <field name="nivel_estudios">1</field>
+    </record>
+
+    <record model="modulo.alumno" id="alumno_2">
+      <field name="name">Lucía</field>
+      <field name="apellidos">Gómez</field>
+      <field name="email">lucia.gomez@example.com</field>
+      <field name="photo" file="academia/static/fotos/usuario2.jpeg" type="base64"></field>
+      <field name="fecha_nacimiento">1998-05-20</field>
+      <field name="nivel_estudios">2</field>
+    </record>
+
+    <record model="modulo.alumno" id="alumno_3">
+      <field name="name">Ana</field>
+      <field name="apellidos">Rodríguez</field>
+      <field name="email">ana.rodriguez@example.com</field>
+      <field name="photo" file="academia/static/fotos/usuario3.jpeg" type="base64"></field>
+      <field name="fecha_nacimiento">2002-09-10</field>
+      <field name="nivel_estudios">3</field>
+    </record>
+
+    <!-- Clases de ejemplo -->
+    <record model="modulo.clase" id="clase_1">
+      <field name="name">Introducción a la programación</field>
+      <field name="description">Curso de introducción a la programación</field>
+      <field name="fecha">2023-06-01</field>
+      <field name="hora_inicio">10:00</field>
+      <field name="hora_fin">12:00</field>
+      <field name="profesor_id" ref="profesor_1"/>
+      <field name="alumno_ids" eval="[(6,0, [ref('alumno_1'),ref('alumno_2')])]"/>
+    </record>
+
+    <record model="modulo.clase" id="clase_2">
+      <field name="name">Desarrollo web con Python y Flask</field>
+      <field name="description">Curso de desarrollo web con Python y Flask</field>
+      <field name="fecha">2023-06-02</field>
+      <field name="hora_inicio">14:00</field>
+      <field name="hora_fin">16:00</field>
+      <field name="profesor_id" ref="profesor_2"/>
+      <field name="alumno_ids" eval="[(6,0,[ref('alumno_1'), ref('alumno_3')])]"/>
+    </record>
+
+    <record model="modulo.clase" id="clase_3">
+      <field name="name">Programación Orientada a Objetos</field>
+      <field name="description">Curso de programación orientada a objetos</field>
+      <field name="fecha">2023-06-03</field>
+      <field name="hora_inicio">16:00</field>
+      <field name="hora_fin">18:00</field>
+      <field name="profesor_id" ref="profesor_1"/>
+      <field name="alumno_ids" eval="[(6,0,[ref('alumno_2'), ref('alumno_3')])]"/>
+    </record>
+
+    <record model="modulo.clase" id="clase_4">
+      <field name="name">Bases de datos con SQL</field>
+        <field name="description">Curso de bases de datos con SQL</field>
+        <field name="fecha">2023-06-05</field>
+        <field name="hora_inicio">10:00</field>
+        <field name="hora_fin">12:00</field>
+        <field name="profesor_id" ref="profesor_2"/>
+        <field name="alumno_ids" eval="[(6,0,[ref('alumno_1'), ref('alumno_3')])]"/>
+      </record>
+
+    
+
+    </data>
+</odoo>

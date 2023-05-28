@@ -1,0 +1,6 @@
+id,name,model_id:id,group_id:id,perm_read,perm_write,perm_create,perm_unlink
+access_modulo_profesor_acl,access_modulo_profesor_default,model_modulo_profesor,academia_admin,1,1,1,1
+access_modulo_alumno_acl,access_modulo_alumno_default,model_modulo_alumno,academia_admin,1,1,1,1
+acces_modulo_clase_acl,acces_modulo_clase_default,model_modulo_clase,academia_admin,1,1,1,1
+acces_modulo_clase_user_acl,acces_modulo_clase_user_default,model_modulo_clase,academia_users,1,0,0,0
+access_modulo_alumno_user_acl,access_modulo_alumno_user_default,model_modulo_alumno,academia_users,1,0,0,0

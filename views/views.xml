@@ -1,0 +1,166 @@
+<odoo>
+  <data>
+
+    <record model="ir.ui.view" id="modulo_clase_tree">
+      <field name="name">Vista arbol de clase</field>
+      <field name="model">modulo.clase</field>
+      <field name="arch" type="xml">
+        <tree string="Clases">
+          <field name="name"/>
+          <field name="description"/>
+          <field name="fecha"/>
+          <field name="hora_inicio"/>
+          <field name="hora_fin"/>
+          <field name="profesor_id"/>
+          <field name="alumno_ids"/>
+        </tree>
+      </field>
+    </record>
+
+    <record model="ir.ui.view" id="modulo_profesor_tree">
+      <field name="name">Vista arbol de profesor</field>
+      <field name="model">modulo.profesor</field>
+      <field name="arch" type="xml">
+        <tree string="Profesores">
+          <field name="name"/>
+          <field name="apellidos"/>
+          <field name="email"/>
+          <field name="clases_ids"/>
+        </tree>
+      </field>
+    </record>
+
+    <record model="ir.ui.view" id="modulo_alumno_tree">
+      <field name="name">Vista arbol de alumno</field>
+      <field name="model">modulo.alumno</field>
+      <field name="arch" type="xml">
+        <tree string="Alumnos">
+          <field name="photo" widget="image"/>
+          <field name="name"/>
+          <field name="apellidos"/>
+          <field name="email"/>          
+          <field name="fecha_nacimiento"/>
+          <field name="nivel_estudios"/>
+          <field name="clases_ids"/>
+        </tree>
+      </field>
+    </record>
+
+    <!-- Clase form view -->
+    <record model="ir.ui.view" id="modulo_clase_form">
+      <field name="name">Vista formulario de clase</field>
+      <field name="model">modulo.clase</field>
+      <field name="arch" type="xml">
+        <form string="Clases">
+          <sheet>
+            <group>
+              <field name="name"/>
+              <field name="description"/>
+              <field name="fecha"/>
+              <field name="hora_inicio" required="True" widget="time"/>
+              <field name="hora_fin" required="True" widget="time"/>
+              <field name="profesor_id"/>
+            </group>
+            <notebook>
+              <page string="Alumnos">
+                <field name="alumno_ids"/>
+              </page>
+            </notebook>
+          </sheet>
+        </form>
+      </field>
+    </record>
+
+    <!-- Alumno form view -->
+    <record model="ir.ui.view" id="modulo_alumno_form">
+      <field name="name">Vista formulario de alumno</field>
+      <field name="model">modulo.alumno</field>
+      <field name="arch" type="xml">
+        <form string="Alumnos">
+          <sheet>
+            <group>
+              <field name="photo" widget="image"/>
+              <field name="name"/>
+              <field name="apellidos"/>
+              <field name="email"/>              
+              <field name="fecha_nacimiento"/>
+              <field name="nivel_estudios"/>
+            </group>
+            <notebook>
+              <page string="Clases">
+                <field name="clases_ids" widget="many2many_tags"/>
+              </page>
+            </notebook>
+          </sheet>
+        </form>
+      </field>
+    </record>
+
+    <!-- Profesor form view -->
+    <record model="ir.ui.view" id="modulo_profesor_form">
+      <field name="name">Vista formulario de profesor</field>
+      <field name="model">modulo.profesor</field>
+      <field name="arch" type="xml">
+        <form string="Profesores">
+          <sheet>
+            <group>
+              <field name="name"/>
+              <field name="apellidos"/>
+              <field name="email"/>
+            </group>
+            <notebook>
+              <page string="Clases">
+                <field name="clases_ids" widget="one2many_list"/>
+              </page>
+            </notebook>
+          </sheet>
+        </form>
+      </field>
+    </record>
+
+    <!-- actions opening views on models RES_MODEL DEBE SER IGUAL AL _NAME DEL MODULO-->
+    <record model="ir.actions.act_window" id="modulo_clase_action_window">
+      <field name="name">Clases</field>
+      <field name="res_model">modulo.clase</field>
+      <field name="view_mode">tree,form</field>
+      <field name="help" type="html">
+        <p class="oe_view_nocontent_create">
+          Crea tu primera clase.
+        </p>
+      </field>
+    </record>
+
+    <record model="ir.actions.act_window" id="modulo_profesor_action_window">
+      <field name="name">Profesores</field>
+      <field name="res_model">modulo.profesor</field>
+      <field name="view_mode">tree,form</field>
+    </record>
+
+    <record model="ir.actions.act_window" id="modulo_alumno_action_window">
+      <field name="name">Alumnos</field>
+      <field name="res_model">modulo.alumno</field>
+      <field name="view_mode">tree,form</field>
+    </record>
+
+    
+
+
+    <!-- Top menu item AQUI DEFINIMOS COMO QUEREMOS QUE APAREZCA NUESTRO MENÚ -->
+    <menuitem name="Gestión Clases" id="modulo_academia_menu_root"/> 
+
+    <!-- menu categories AQUI ESTO DEBE SER IGUAL:  id == parent-->
+    <!-- En parent como tenemos que hacer referencia al otro modulo, hay que usar punto: -->
+    <menuitem name="Clases" id="modulo_clase_menu_1" parent="modulo_academia_menu_root" groups="academia.academia_users,academia.academia_admin"/>
+    <menuitem name="Profesores" id="modulo_profesores_menu_1" parent="modulo_academia_menu_root" groups="academia.academia_admin"/>
+    <menuitem name="Alumnos" id="modulo_alumnos_menu_1" parent="modulo_academia_menu_root" groups="academia.academia_admin"/>
+
+    <!-- actions -->
+    <menuitem name="Ver clases" id="modulo2_clase_menu_1_list" parent="modulo_clase_menu_1"
+              action="modulo_clase_action_window" groups="academia.academia_users,academia.academia_admin"/>
+    <menuitem name="Ver profesores" id="modulo_profesor_menu_1_list" parent="modulo_profesores_menu_1"
+              action="modulo_profesor_action_window" groups="academia.academia_admin" />
+    <menuitem name="Ver alumnos" id="modulo_alumno_menu_1_list" parent="modulo_alumnos_menu_1"
+              action="modulo_alumno_action_window" groups="academia.academia_admin"/>
+
+  </data>
+</odoo>
