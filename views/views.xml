@@ -2,17 +2,17 @@
   <data>
 
     <record model="ir.ui.view" id="modulo_clase_tree">
-      <field name="name">Vista arbol de clase</field>
+      <field name="name">Vista árbol de clase</field>
       <field name="model">modulo.clase</field>
       <field name="arch" type="xml">
-        <tree string="Clases">
+        <tree string="Clases" decoration-muted="alumno_ids">
           <field name="name"/>
           <field name="description"/>
           <field name="fecha"/>
           <field name="hora_inicio"/>
           <field name="hora_fin"/>
           <field name="profesor_id"/>
-          <field name="alumno_ids"/>
+          <field name="alumno_ids" widget="many2many_tags" options="{'no_create': True}"/>
         </tree>
       </field>
     </record>
