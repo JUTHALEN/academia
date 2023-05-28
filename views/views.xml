@@ -5,7 +5,7 @@
       <field name="name">Vista árbol de clase</field>
       <field name="model">modulo.clase</field>
       <field name="arch" type="xml">
-        <tree string="Clases" decoration-muted="alumno_ids">
+        <tree string="Clases" decoration-muted="alumno_ids" decoration-warning="{'invisible': [('fecha', '&lt;', '2023-01-01')]}">
           <field name="name"/>
           <field name="description"/>
           <field name="fecha"/>
@@ -21,7 +21,7 @@
       <field name="name">Vista árbol de profesor</field>
       <field name="model">modulo.profesor</field>
       <field name="arch" type="xml">
-        <tree string="Profesores">
+        <tree string="Profesores" decoration-danger="{'invisible': [('clases_ids', '!=', False)]}">
           <field name="name"/>
           <field name="apellidos"/>
           <field name="email"/>
@@ -34,7 +34,7 @@
       <field name="name">Vista árbol de alumno</field>
       <field name="model">modulo.alumno</field>
       <field name="arch" type="xml">
-        <tree string="Alumnos">
+        <tree string="Alumnos" decoration-success="{'invisible': [('tarifa', '!=', '2')]}">
           <field name="photo" widget="image"/>
           <field name="name"/>
           <field name="apellidos"/>
@@ -49,6 +49,7 @@
         </tree>
       </field>
     </record>
+
 
 
     <!-- Clase form view -->
