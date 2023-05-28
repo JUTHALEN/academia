@@ -104,11 +104,11 @@ class modulo_alumno(models.Model):
     @api.depends('tarifa')
     def _compute_trainings(self):
         for record in self:
-            if record.tarifa == 'basica':
+            if record.tarifa == '1':
                 record.trainings = 5
-            elif record.tarifa == 'premium':
+            elif record.tarifa == '2':
                 record.trainings = 10
-            elif record.tarifa == 'gold':
+            elif record.tarifa == '3':
                 record.trainings = 15
             else:
                 record.trainings = 0
