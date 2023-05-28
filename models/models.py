@@ -73,10 +73,17 @@ class modulo_alumno(models.Model):
     enrollment_date = fields.Date(string="Fecha de inscripción", default=fields.Date.today())
     nivel_estudios  = fields.Selection(
         [('1', 'Primaria'), ('2', 'ESO'), ('3', 'Bachillerato')], string="Nivel de estudios")
+    tarifa = fields.Selection([
+        ('1', 'Básica'),
+        ('2', 'Premium'),
+        ('3', 'Gold'),
+    ], string="Tarifa", default='1')
     clases_ids = fields.Many2many(
         comodel_name='modulo.clase', 
         string="Clases", 
         ondelete='cascade')
+
+    trainings = fields.Integer(string='Trainings', compute='_compute_trainings')
     
     _sql_constraints = [
         ('email_unique',
@@ -93,3 +100,15 @@ class modulo_alumno(models.Model):
                     raise ValidationError("El DNI debe tener 8 números seguidos de una letra.")
             else:
                 raise ValidationError("El DNI debe tener 9 caracteres.")
+
+    @api.depends('tarifa')
+    def _compute_trainings(self):
+        for record in self:
+            if record.tarifa == 'basica':
+                record.trainings = 5
+            elif record.tarifa == 'premium':
+                record.trainings = 10
+            elif record.tarifa == 'gold':
+                record.trainings = 15
+            else:
+                record.trainings = 0

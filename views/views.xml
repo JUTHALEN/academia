@@ -42,6 +42,7 @@
           <field name="dni"/>
           <field name = "last_login"/>
           <field name = "enrollment_date"/>
+          <field name = "tarifa"/>
           <field name="fecha_nacimiento"/>
           <field name="nivel_estudios"/>
           <field name="clases_ids"/>
@@ -86,7 +87,8 @@
               <field name="name"/>
               <field name="apellidos"/>
               <field name="email"/> 
-              <field name="dni"/>       
+              <field name="dni"/>   
+              <field name = "tarifa"/>    
               <field name = "last_login"/>
               <field name = "enrollment_date"/>      
               <field name="fecha_nacimiento"/>
