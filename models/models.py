@@ -65,6 +65,7 @@ class modulo_alumno(models.Model):
     name = fields.Char(string="Nombre")
     apellidos = fields.Char(string="Apellidos")
     email = fields.Char(string="Email")
+    dni = fields.Char(string="DNI", size=9)
     photo = fields.Image(max_width=100, max_height=100)
     fecha_nacimiento = fields.Date(string="Fecha de nacimiento")
     nivel_estudios  = fields.Selection(
@@ -79,3 +80,13 @@ class modulo_alumno(models.Model):
         'UNIQUE(email)',
         "El email debe ser único"),
     ]
+
+    @api.constrains('dni')
+    def _check_dni(self):
+        for record in self:
+            dni = record.dni
+            if dni and len(dni) == 9:
+                if not re.match(r'^\d{8}[A-Za-z]$', dni):
+                    raise ValidationError("El DNI debe tener 8 números seguidos de una letra.")
+            else:
+                raise ValidationError("El DNI debe tener 9 caracteres.")
