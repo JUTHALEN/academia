@@ -1,5 +1,6 @@
 #-*- coding: utf-8 -*-
 from odoo import models, fields, api
+from datetime import datetime
 import re
 from odoo.exceptions import ValidationError
 
@@ -68,6 +69,8 @@ class modulo_alumno(models.Model):
     dni = fields.Char(string="DNI", size=9)
     photo = fields.Image(max_width=100, max_height=100)
     fecha_nacimiento = fields.Date(string="Fecha de nacimiento")
+    last_login = fields.Datetime(string="Último acceso", default=lambda self: fields.Datetime.now())
+    enrollment_date = fields.Date(string="Fecha de inscripción", default=fields.Date.today())
     nivel_estudios  = fields.Selection(
         [('1', 'Primaria'), ('2', 'ESO'), ('3', 'Bachillerato')], string="Nivel de estudios")
     clases_ids = fields.Many2many(
