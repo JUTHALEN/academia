@@ -93,7 +93,7 @@
               <field name = "tarifa"/>  
               <field name = "trainings"/>  
               <field name = "last_login"/>
-              <field name = "enrollment_date"/>      
+              <field name = "enrollment_date" class="oe_read_only"/>      
               <field name="fecha_nacimiento"/>
               <field name="nivel_estudios"/>
             </group>
