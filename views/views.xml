@@ -88,7 +88,8 @@
               <field name="apellidos"/>
               <field name="email"/> 
               <field name="dni"/>   
-              <field name = "tarifa"/>    
+              <field name = "tarifa"/>  
+              <field name = "trainings"/>  
               <field name = "last_login"/>
               <field name = "enrollment_date"/>      
               <field name="fecha_nacimiento"/>
