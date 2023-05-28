@@ -25,6 +25,7 @@
       <field name="name">Pedro</field>
       <field name="apellidos">García</field>
       <field name="email">pedro.garcia@example.com</field>
+      <field name="dni">12345678A</field>
       <field name="photo" file="academia/static/fotos/usuario1.jpeg" type="base64"></field>
       <field name="fecha_nacimiento">2000-01-01</field>
       <field name="nivel_estudios">1</field>
@@ -34,6 +35,7 @@
       <field name="name">Lucía</field>
       <field name="apellidos">Gómez</field>
       <field name="email">lucia.gomez@example.com</field>
+      <field name="dni">87654321B</field>
       <field name="photo" file="academia/static/fotos/usuario2.jpeg" type="base64"></field>
       <field name="fecha_nacimiento">1998-05-20</field>
       <field name="nivel_estudios">2</field>
@@ -43,6 +45,7 @@
       <field name="name">Ana</field>
       <field name="apellidos">Rodríguez</field>
       <field name="email">ana.rodriguez@example.com</field>
+      <field name="dni">98765432C</field>
       <field name="photo" file="academia/static/fotos/usuario3.jpeg" type="base64"></field>
       <field name="fecha_nacimiento">2002-09-10</field>
       <field name="nivel_estudios">3</field>
