@@ -18,37 +18,38 @@
     </record>
 
     <record model="ir.ui.view" id="modulo_profesor_tree">
-      <field name="name">Vista arbol de profesor</field>
+      <field name="name">Vista árbol de profesor</field>
       <field name="model">modulo.profesor</field>
       <field name="arch" type="xml">
         <tree string="Profesores">
           <field name="name"/>
           <field name="apellidos"/>
           <field name="email"/>
-          <field name="clases_ids"/>
+          <field name="clases_ids" widget="many2many_tags" options="{'no_create': True}"/>
         </tree>
       </field>
     </record>
 
     <record model="ir.ui.view" id="modulo_alumno_tree">
-      <field name="name">Vista arbol de alumno</field>
+      <field name="name">Vista árbol de alumno</field>
       <field name="model">modulo.alumno</field>
       <field name="arch" type="xml">
         <tree string="Alumnos">
           <field name="photo" widget="image"/>
           <field name="name"/>
           <field name="apellidos"/>
-          <field name="email"/>       
+          <field name="email"/>
           <field name="dni"/>
-          <field name = "last_login"/>
-          <field name = "enrollment_date"/>
-          <field name = "tarifa"/>
+          <field name="last_login" invisible="1"/>
+          <field name="enrollment_date" invisible="1"/>
+          <field name="tarifa" invisible="1"/>
           <field name="fecha_nacimiento"/>
           <field name="nivel_estudios"/>
-          <field name="clases_ids"/>
+          <field name="clases_ids" widget="many2many_tags" options="{'no_create': True}"/>
         </tree>
       </field>
     </record>
+
 
     <!-- Clase form view -->
     <record model="ir.ui.view" id="modulo_clase_form">
